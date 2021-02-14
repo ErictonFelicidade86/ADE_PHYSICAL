@@ -1,0 +1,73 @@
+.btn-login{
+    background-color: #ffffff;
+    border: solid 1px #dc3545;
+    border-radius: 20px;
+    color: #dc3545;
+    width: 140px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px 6px 12px;
+}
+.btn-login:hover{
+    background-color: #dc3545;
+    color: #ffffff;
+    border: solid 1px #dc3545;
+    font-weight: bold;
+}
+.btn-buscar{
+    background-color: #ffffff;
+    border: solid 1px #187da0;
+    border-radius: 20px;
+    color: #187da0;
+    width: 140px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px 6px 12px;
+}
+.btn-buscar:hover{
+    background-color: #187da0;
+    color: #ffffff;
+    border: solid 1px #187da0;
+    font-weight: bold;
+}
+.btn-cadastro{
+    background-color: #ffffff;
+    border: solid 1px #28a745;
+    border-radius: 20px;
+    color: #28a745;
+    width: 140px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px 6px 12px;
+}
+.btn-cadastro:hover{
+    background-color: #28a745;
+    color: #ffffff;
+    border: solid 1px #28a745;
+    font-weight: bold;
+}
+.card-borda{
+    border-radius: 20px;
+}
+
+.titulo{
+    color: #ffffff;
+    font-family: Open sans regular;
+    font-weight: bold;
+    font-size: 16px;
+}

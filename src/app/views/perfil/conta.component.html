@@ -1,0 +1,48 @@
+<mat-dialog-content>
+  <div class="modal-dialog modal-danger modal-lg" role="document">
+    <div class="modal-content">
+      <form [formGroup]="contaForm" (ngSubmit)="cadastrar()">
+          <div class="modal-header bg-danger ">
+              <h4 class="modal-title">Cadastro do Login</h4>
+            </div>
+            <div class="modal-body">
+              <h6 class="card-subtitle mb-2 text-right text-danger"><b class="text-danger">* </b> São campos obrigatórios</h6>
+                <h6 class="card-subtitle mb-2 text-primary">Dados Pessoais</h6>
+                <hr>
+                <div class="row">
+                  <div class="form-group col-sm-8">
+                      <label for="name">Nome <b class="text-danger">*</b></label>
+                      <input type="text" class="form-control" id="nomeModal" formControlName="nome" [ngClass]="validacaoCSS('nome')" placeholder="Nome Completo">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-8">
+                      <label for="email">E-mail <b class="text-danger">*</b></label>
+                      <input type="text" class="form-control" id="login-email" formControlName="email" [ngClass]="validacaoCSS('email')" placeholder="exemplo@email.com.br">
+                  </div>
+                </div>
+                <h6 class="card-subtitle mb-2 text-primary">Criar Senha</h6>
+                <hr>
+                <div class="row">
+                  <div class="form-group col-sm-8">
+                      <label for="name">Nova senha <b class="text-danger">*</b></label>
+                      <input type="password" class="form-control" id="login-senha" formControlName="senha" [ngClass]="validacaoCSS('senha')" placeholder="Senha">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-8">
+                      <label for="name">Confirmar Senha <b class="text-danger">*</b></label>
+                      <input type="password" class="form-control" id="confirmaSenhaModal" formControlName="confirmaSenha" [ngClass]="validacaoCSS('confirmaSenha')" placeholder="Confirma senha">
+                  </div>
+                </div>
+            </div>
+      </form>
+      <mat-dialog-actions align="end">
+      <div class="card-footer">
+        <button type="reset" class="btn btn-outline-dark mr-4" (click)="modalReset()" (click)="myModal.hide()">Resetar</button>
+        <button type="submit" class="btn btn-outline-primary pull-right" (click)="cadastrar()">Salvar</button>
+      </div>
+    </mat-dialog-actions>
+    </div>
+  </div>
+</mat-dialog-content>

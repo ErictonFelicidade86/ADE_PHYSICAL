@@ -1,0 +1,132 @@
+<mat-dialog-content>
+    <div class="animated fadeIn">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div class="col-sm-10">
+                <div class="card">
+                    <form [formGroup]="getNovoAluno()" (ngSubmit)="onSubmit()">
+                        <div class="card-header bg-success">
+                            <i class="fa fa-edit"></i>Cadastro de Aluno
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-right text-success"><b class="text-danger">* </b> São campos obrigatórios</h6>
+                            <h6 class="card-subtitle mb-2 text-primary">Dados do Aluno</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group col-sm-8">
+                                    <label for="name">Nome <b class="text-danger">*</b></label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.nome" id="nome" formControlName="nome" placeholder="Nome completo" [ngClass]="validacaoCSS('nome')">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="nascimento">Data de Nascimento</label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.dataNascimento" id="nascimento" formControlName="dataNascimento" placeholder="dd/mm/aaaa" bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="sexo">Sexo <b class="text-danger">*</b></label>
+                                    <select id="sexo" formControlName="sexo" [(ngModel)]="aluno.sexo" class="form-control" placeholder="Selecione o sexo" [ngClass]="validacaoCSS('sexo')">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Feminino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="CPF">CPF <b class="text-danger">*</b></label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.cpf" id="cpf" formControlName="cpf" placeholder="000.000.000-00" [textMask]="{mask: cpfMask}" [ngClass]="validacaoCSS('cpf')">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="responsavel">Responsável</label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.responsavel" id="responsavel" formControlName="responsavel" placeholder="Nome do pesponsável">
+                                </div>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-primary">Endereço do Aluno</h6>
+                            <hr>
+                            <div class="row">
+                            <div class="form-group col-sm-3">
+                                <label for="cep">CEP <b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" [(ngModel)]="aluno.cep" id="cep" formControlName="cep" placeholder="00000-000" [textMask]="{mask: cepMask}" (blur)="consultaCEP()" [ngClass]="validacaoCSS('cep')">
+                            </div>
+                            <div class="form-group col-sm-5">
+                                <label for="rua">Logradouro</label>
+                                <input type="text" class="form-control" [(ngModel)]="aluno.rua" id="rua" formControlName="rua" placeholder="logradouro">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" class="form-control" [(ngModel)]="aluno.bairro" id="bairro" formControlName="bairro" placeholder="Bairro">
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="uf">Estado</label>
+                                    <select id="uf" class="form-control" [(ngModel)]="aluno.estado" formControlName="estado" placeholder="Uf" (blur)="ConstruirCidades()">
+                                        <option *ngFor="let estado of getEstados() | async" [value]="estado.sigla">{{ estado.nome}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="cidade">Cidade</label>
+                                    <select id="cidade" class="form-control" [(ngModel)]="aluno.cidade" formControlName="cidade">
+                                        <option *ngFor="let cidade of getCidades() | async" [value]="cidade.nome">{{cidade.nome}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="complemento">Complemento</label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.complemento" id="complemento" formControlName="complemento" placeholder="Complemento">
+                                </div>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-primary">Contatos do Aluno</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.telefone" id="telefone" formControlName="telefone" placeholder="(00) 0000-0000" [textMask]="{mask: phoneMask}">
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="telefone">Celular <b class="text-danger">*</b></label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.celular" id="celular" formControlName="celular" placeholder="(00) 00000-0000" [textMask]="{mask: celPhoneMask}" [ngClass]="validacaoCSS('celular')">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="email">E-mail <b class="text-danger">*</b></label>
+                                    <input type="text" class="form-control" [(ngModel)]="aluno.email" id="email" formControlName="email" placeholder="exemplo@email.com.br" [ngClass]="validacaoCSS('email')">
+                                </div>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-primary">Caracteristicas do Aluno</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="faixaEtaria">Faixa Etária</label>
+                                    <select id="faixaEtaria" class="form-control" [(ngModel)]="aluno.faixaEtaria" formControlName="faixaEtaria">
+                                        <option value="Adolescente">Adolescente</option>
+                                        <option value="Adulto">Adulto</option>
+                                        <option value="Idoso">Idoso</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="etnia">Etnia</label>
+                                    <select id="etnia" class="form-control" [(ngModel)]="aluno.etnia" formControlName="etnia">
+                                        <option value="Branco">Branco</option>
+                                        <option value="Negro">Negro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-primary">Observações</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label for="observacao">Observação</label>
+                                    <textarea id="observacao" class="form-control" [(ngModel)]="aluno.descricao" formControlName="descricao" placeholder="Faça uma observação com até 500 palavras"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-dialog-actions align='end'>
+                            <div class="card-footer">
+                                <button type="reset" class="btn btn-outline-dark mr-4">Resetar</button>
+                                <button type="submit" class="btn btn-outline-primary pull-right">Salvar</button>
+                            </div>
+                        </mat-dialog-actions>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+
+  

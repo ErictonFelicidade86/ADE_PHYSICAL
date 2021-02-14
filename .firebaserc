@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ade-physical-305b4": {
+      "hosting": {
+        "ng": [
+          "ade-physical-305b4"
+        ]
+      }
+    }
+  }
+}

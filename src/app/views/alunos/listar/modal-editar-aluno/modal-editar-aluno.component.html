@@ -1,0 +1,137 @@
+<mat-dialog-content>
+    <form>
+        <div class="card-header bg-info">
+            <i class="fa fa-edit"></i>Alterar cadastro
+            <button type="button" class="close" mat-dialog-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-right text-info"><b class="text-danger">* </b> São campos obrigatórios</h6>
+            <h6 class="card-subtitle mb-2 text-primary">Dados do Aluno</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label for="name">Nome <b class="text-danger">*</b></label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.nome" name="nome" id="nome" placeholder="Nome completo">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.dataNascimento" name="dataNascimento" id="nascimento" placeholder="dd/mm/aaaa" bsDatepicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="sexo">Sexo <b class="text-danger">*</b></label>
+                    <select id="sexo" [(ngModel)]="data.sexo" name="sexo" class="form-control" placeholder="Selecione o sexo">
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="CPF">CPF <b class="text-danger">*</b></label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.cpf" id="cpf" name="cpf" placeholder="000.000.000-00">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="responsavel">Responsável</label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.responsavel" id="responsavel" name="responsavel" placeholder="Nome do pesponsável">
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-primary">Endereço do Aluno</h6>
+            <hr>
+            <div class="row">
+            <div class="form-group col-sm-3">
+                <label for="cep">CEP <b class="text-danger">*</b></label>
+                <input type="text" class="form-control" [(ngModel)]="aluno.cep" id="cep" name="cep" placeholder="00000-000">
+            </div>
+            <div class="form-group col-sm-5">
+                <label for="rua">Logradouro</label>
+                <input type="text" class="form-control" [(ngModel)]="aluno.rua" id="rua" name="rua" placeholder="logradouro">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" [(ngModel)]="aluno.bairro" id="bairro" name="bairro" placeholder="Bairro">
+            </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="uf">Estado</label>
+                    <select id="uf" class="form-control" [(ngModel)]="aluno.estado" name="estado" placeholder="Uf">
+                       
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="cidade">Cidade</label>
+                    <select id="cidade" class="form-control" [(ngModel)]="aluno.cidade" name="cidade">
+                        
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.complemento" id="complemento" name="complemento" placeholder="Complemento">
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-primary">Contatos do Aluno</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.telefone" id="telefone" name="telefone" placeholder="(00) 0000-0000">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="telefone">Celular <b class="text-danger">*</b></label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.celular" id="celular" name="celular" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="email">E-mail <b class="text-danger">*</b></label>
+                    <input type="text" class="form-control" [(ngModel)]="aluno.email" id="email" name="email" placeholder="exemplo@email.com.br">
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-primary">Caracteristicas do Aluno</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="faixaEtaria">Faixa Etária</label>
+                    <select id="faixaEtaria" class="form-control" [(ngModel)]="aluno.faixaEtaria" name="faixaEtaria">
+                        <option value="Adolescente">Adolescente</option>
+                        <option value="Adulto">Adulto</option>
+                        <option value="Idoso">Idoso</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="etnia">Etnia</label>
+                    <select id="etnia" class="form-control" [(ngModel)]="data.etnia" name="etnia">
+                        <option value="Branco">Branco</option>
+                        <option value="Negro">Negro</option>
+                    </select>
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-primary">Observações</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label for="observacao">Observação</label>
+                    <textarea id="observacao" class="form-control" [(ngModel)]="aluno.descricao" name="descricao" placeholder="Faça uma observação com até 500 palavras"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <div class="card-footer">
+        <button
+            type="submit"
+            class="mr-4 btn btn-outline-primary" 
+            [mat-dialog-close]="true" 
+            (click)="edit(aluno)">
+            Salvar Alterações
+        </button>
+        <button
+            type="reset"
+            class="btn btn-outline-danger btn-alterar"
+            mat-dialog-close>
+            Cancelar
+        </button>
+    </div>
+</mat-dialog-actions>
+

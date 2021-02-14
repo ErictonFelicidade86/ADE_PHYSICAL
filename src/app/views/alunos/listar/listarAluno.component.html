@@ -1,0 +1,44 @@
+<div class="animated fadeIn">
+  <div>
+    <div class="col-sm-12">
+      <div class="card">
+        <form class="form-horizontal">
+          <div class="card-header bg-info">
+            <i class="fa fa-edit"></i>Lista dos Alunos Cadastrados
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-primary">Pesquisa</h6>
+            <div class="row">
+              <div class="form-group col-sm-5">
+                <input
+                      type="search"
+                      class="form-control"
+                      id="pesquisa"
+                      placeholder="Pesquisa"
+                >
+              </div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" colspan="2">Nome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let aluno of alunos | async">
+                    <th scope="row"></th>
+                    <td>{{aluno.nome}}</td>
+                    <td>
+                      <button type="button" class="btn btn-outline-dark" (click)="openModal(aluno)">Editar</button>
+                      <button type="button" class="btn btn-outline-danger ml-2" (click)="delete(aluno.key)">Excluir</button>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
